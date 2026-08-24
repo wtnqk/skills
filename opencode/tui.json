@@ -1,0 +1,10 @@
+{
+  "plugin": [
+    "opencode-add-dir"
+  ],
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "everforest",
+  "keybinds": {
+    "app_exit": "<leader>q"
+  }
+}
