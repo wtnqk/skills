@@ -1,12 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": [
+  "plugins": [
     "opencode-add-dir"
   ],
   "compaction": {
     "auto": true,
     "prune": true,
-    "reserved": 10000
+    "buffer": 10000
   },
   "watcher": {
     "ignore": [
@@ -20,61 +20,61 @@
     ]
   },
   "mcp": {
-    "playwright": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@playwright/mcp@latest"
-      ]
-    },
-    "serena": {
-      "type": "local",
-      "command": [
-        "serena",
-        "start-mcp-server",
-        "--context",
-        "claude-code",
-        "--enable-web-dashboard",
-        "false"
-      ]
-    },
-    "deepwiki": {
-      "type": "remote",
-      "url": "https://mcp.deepwiki.com/mcp"
-    },
-    "ast-grep": {
-      "type": "local",
-      "command": [
-        "ast-grep-server"
-      ]
+    "servers": {
+      "playwright": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@playwright/mcp@latest"
+        ]
+      },
+      "serena": {
+        "type": "local",
+        "command": [
+          "serena",
+          "start-mcp-server",
+          "--context",
+          "claude-code",
+          "--enable-web-dashboard",
+          "false"
+        ]
+      },
+      "deepwiki": {
+        "type": "remote",
+        "url": "https://mcp.deepwiki.com/mcp"
+      },
+      "ast-grep": {
+        "type": "local",
+        "command": [
+          "ast-grep-server"
+        ]
+      }
     }
   },
-  "permission": {
-    "bash": {
-      "*": "allow",
-      "rm -rf /*": "deny",
-      "rm -rf /": "deny",
-      "sudo rm -rf *": "deny",
-      "dd if=*": "deny",
-      "mkfs.*": "deny",
-      "fdisk *": "deny",
-      "shutdown *": "deny",
-      "reboot *": "deny",
-      "halt *": "deny",
-      "poweroff *": "deny",
-      "killall *": "deny",
-      "pkill -f *": "deny"
-    },
-    "edit": "allow",
-    "write": "allow",
-    "read": "allow",
-    "glob": "allow",
-    "grep": "allow",
-    "webfetch": "allow",
-    "search": "allow",
-    "ask": "allow",
-    "memo": "allow",
-    "http": "allow"
-  }
+  "permissions": [
+    { "action": "bash", "resource": "*", "effect": "allow" },
+    { "action": "bash", "resource": "rm -rf /*", "effect": "deny" },
+    { "action": "bash", "resource": "rm -rf /", "effect": "deny" },
+    { "action": "bash", "resource": "sudo rm -rf *", "effect": "deny" },
+    { "action": "bash", "resource": "dd if=*", "effect": "deny" },
+    { "action": "bash", "resource": "mkfs.*", "effect": "deny" },
+    { "action": "bash", "resource": "fdisk *", "effect": "deny" },
+    { "action": "bash", "resource": "shutdown *", "effect": "deny" },
+    { "action": "bash", "resource": "reboot *", "effect": "deny" },
+    { "action": "bash", "resource": "halt *", "effect": "deny" },
+    { "action": "bash", "resource": "poweroff *", "effect": "deny" },
+    { "action": "bash", "resource": "killall *", "effect": "deny" },
+    { "action": "bash", "resource": "pkill -f *", "effect": "deny" },
+    { "action": "edit", "resource": "*", "effect": "allow" },
+    { "action": "write", "resource": "*", "effect": "allow" },
+    { "action": "read", "resource": "*", "effect": "allow" },
+    { "action": "glob", "resource": "*", "effect": "allow" },
+    { "action": "grep", "resource": "*", "effect": "allow" },
+    { "action": "webfetch", "resource": "*", "effect": "allow" },
+    { "action": "search", "resource": "*", "effect": "allow" },
+    { "action": "ask", "resource": "*", "effect": "allow" },
+    { "action": "memo", "resource": "*", "effect": "allow" },
+    { "action": "http", "resource": "*", "effect": "allow" }
+  ]
 }
