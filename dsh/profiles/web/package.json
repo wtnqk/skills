@@ -1,0 +1,17 @@
+{
+  "name": "dsh-profile-web",
+  "private": true,
+  "dependencies": {
+    "dsh-mermaid-plugin": "github:wtnqk/dsh-mermaid-plugin"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-mermaid-plugin"
+      ],
+      "patchReload": "live"
+    }
+  }
+}

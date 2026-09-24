@@ -1,0 +1,8 @@
+packages:
+  - .
+
+nodeLinker: hoisted
+autoInstallPeers: false
+
+allowBuilds:
+  "dsh-mermaid-plugin@https://codeload.github.com/wtnqk/dsh-mermaid-plugin/tar.gz/dfd4ec1b31489ea35120761d3d59e453826ca8d7": true
